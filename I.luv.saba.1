@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تيتو دايما بيحب صبا و صبا بس</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+}
+
+/* الخلفية */
+.flower {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #ff4d6d;
+    transform: rotate(45deg);
+    opacity: 0.4;
+    animation: float 25s linear infinite;
+}
+
+.flower::before,
+.flower::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #ff4d6d;
+    border-radius: 50%;
+}
+
+.flower::before {
+    top: -6px;
+    left: 0;
+}
+
+.flower::after {
+    left: -6px;
+    top: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(45deg) scale(0.5);
+    }
+    100% {
+        transform: translateY(-10vh) rotate(45deg) scale(1);
+    }
+}
+
+/* القالب */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 90%;
+    max-width: 400px;
+
+    padding: 25px;
+    background: rgba(20,20,20,0.8);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+
+    /* الإضاءة */
+    border: 2px solid rgba(255, 30, 86, 0.6);
+    box-shadow: 
+        0 0 10px rgba(255, 30, 86, 0.5),
+        0 0 20px rgba(255, 30, 86, 0.4),
+        0 0 40px rgba(255, 30, 86, 0.3);
+}
+
+/* الأزرار */
+button, .link-btn {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    background: #ff1e56;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+button:hover, .link-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #ff1e56;
+}
+
+/* النص */
+#text {
+    margin-top: 15px;
+    min-height: 60px;
+    font-size: 16px;
+}
+
+/* زر المتابعة */
+#nextBtn {
+    opacity: 0;
+    display: none;
+}
+
+.show-btn {
+    display: inline-block;
+    animation: fadeIn 1.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for(let i=0;i<20;i++){
+    let f = document.createElement("div");
+    f.className="flower";
+    f.style.left=Math.random()*100+"%";
+    f.style.animationDuration = (18 + Math.random()*10)+"s";
+    document.body.appendChild(f);
+}
+</script>
+
+<div class="container">
+    <h2>𝐅𝐎𝐑 𝐒𝐀𝐁𝐀</h2>
+    <h5>THE BEST THING IN MY LIFE</h5>
+    <h5>I want u read this 👉🏼👈🏻</h5>
+    
+    <button onclick="startText()">open the message my darling &lt;3</button>
+    
+    <div id="text"></div>
+    
+    <a id="nextBtn" href="T.LUV.S2.html" class="link-btn">continue</a>
+</div>
+
+<script>
+let message = "عـارف انـي كـنـت مـقـصـر مـعـك الـفـتـره الـي راحــت بــس صـدقـيـنـي مـا كـنـتـي تـفـارقـي بـالـي لـحـظـه فـحـبـيـت انـي احـاول اخـلـي عـلاقـتـنا تـرجـع لـطـيفـه و جـمـيـلـه مـثـل بـالـاول و تـسـتـمـر لـحـظـاتـنـا الـسـعيـده و الـلـطـيـفـه لـفـتـره اطـول لـانـي مـا مـتـحـمـل بـعـدنـا عـن بـعـض بـهـالـطـريـقـه لـفـتـره اطـول";
+let i = 0;
+
+function startText(){
+    document.getElementById("text").innerHTML = "";
+    i = 0;
+    document.getElementById("nextBtn").classList.remove("show-btn");
+    document.getElementById("nextBtn").style.display = "none";
+    typeWriter();
+}
+
+function typeWriter(){
+    if(i < message.length){
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 60);
+    } else {
+        let btn = document.getElementById("nextBtn");
+        btn.style.display = "inline-block";
+        setTimeout(()=>{
+            btn.classList.add("show-btn");
+        },100);
+    }
+}
+</script>
+
+</body>
+</html>
